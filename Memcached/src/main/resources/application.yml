@@ -1,0 +1,30 @@
+server:
+  port: 8989
+  context-path: /memcached
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/test
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  profiles:
+    active: product
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+
+mybatis:
+  mapper-locations: classpath:com/haku/dao/impl/*.xml
+  type-aliases-package: com.haku.entity
+logging:
+  level: debug

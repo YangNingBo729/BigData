@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+
+
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-4.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+
+
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    <!-- 引入properties配置文件 -->
+    <context:property-placeholder location="classpath:application.properties"/>
+    <!-- 开启注解 -->
+    <context:component-scan base-package="service"></context:component-scan>
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~1.连接池~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${database.driverClassName}"></property>
+        <property name="url" value="${database.url}"></property>
+        <property name="username" value="${database.username}"></property>
+        <property name="password" value="${database.password}"></property>
+        <property name="initialSize" value="${database.initialSize}"></property>
+        <property name="maxActive" value="${database.maxActive}"></property>
+        <property name="maxWait" value="${database.maxWait}"></property>
+    </bean>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~事务相关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="login" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="regist" propagation="REQUIRED"/>
+            <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut expression="execution(* service.impl.*.*(..))" id="pc"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+    </aop:config>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~mybatis相关~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <bean id="sf" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 连接池 -->
+        <property name="dataSource" ref="ds"></property>
+        <!-- maspper文件注册路径 -->
+        <property name="mapperLocations" value="${mybatis.mapperLocations}"></property>
+        <!-- 别名 -->
+        <property name="typeAliasesPackage" value="${mybatis.typeAliasesPackage}"></property>
+        <!-- 插件 -->
+
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 指定需要的sqlSessionfactory -->
+        <property name="sqlSessionFactoryBeanName" value="sf"></property>
+        <!-- 指定dao接口所在的包 -->
+        <property name="basePackage" value="dao"></property>
+    </bean>
+</beans>
