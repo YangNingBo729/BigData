@@ -10,7 +10,7 @@
         <module name="FastDFS_SpringBoot" />
         <module name="FreeMarker" />
         <module name="Memcached" />
-        <module name="Springboot_FreeMarker" />
+        <module name="quartz_Test" />
         <module name="SSMFreeMarker" />
       </profile>
     </annotationProcessing>
