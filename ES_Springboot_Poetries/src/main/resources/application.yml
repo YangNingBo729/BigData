@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/poet
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  freemarker:
+    prefix: /
+    suffix: .ftl
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.148.145:9300
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+mybatis:
+  mapper-locations: classpath:com/haku/dao/impl/*.xml
+  type-aliases-package: com.haku.entity
+server:
+  port: 8989
+  servlet:
+    context-path: /poet
+    jsp:
+      init-parameters:
+        development: true
