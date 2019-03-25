@@ -24,6 +24,8 @@ public class AppTest {
         configuration.set("hbase.zookeeper.quorum", "192.168.148.152");
         conn = ConnectionFactory.createConnection(configuration);
         admin = conn.getAdmin();
+
+
     }
 
     @Test
