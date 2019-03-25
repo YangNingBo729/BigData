@@ -25,7 +25,6 @@ public class AppTest {
         conn = ConnectionFactory.createConnection(configuration);
         admin = conn.getAdmin();
 
-
     }
 
     @Test
