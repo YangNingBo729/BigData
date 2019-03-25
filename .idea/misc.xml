@@ -13,6 +13,13 @@
         <option value="$PROJECT_DIR$/FreeMarker/pom.xml" />
         <option value="$PROJECT_DIR$/SSMFreeMarker/pom.xml" />
         <option value="$PROJECT_DIR$/Springboot_FreeMarker/pom.xml" />
+        <option value="$PROJECT_DIR$/Quartz_Spring/pom.xml" />
+        <option value="$PROJECT_DIR$/Springboot_Swagger2/pom.xml" />
+        <option value="$PROJECT_DIR$/ES_Springboot_Poetries/pom.xml" />
+        <option value="$PROJECT_DIR$/ZooKeeper/pom.xml" />
+        <option value="$PROJECT_DIR$/Hadoop_HDFS/pom.xml" />
+        <option value="$PROJECT_DIR$/Hadoop_MapReduce/pom.xml" />
+        <option value="$PROJECT_DIR$/HBase/pom.xml" />
       </list>
     </option>
   </component>

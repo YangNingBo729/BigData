@@ -6,21 +6,33 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ES_Springboot_Poetries" />
         <module name="FastDFS" />
         <module name="FastDFS_SpringBoot" />
         <module name="FreeMarker" />
+        <module name="Hadoop_HDFS" />
+        <module name="Hadoop_MapReduce" />
+        <module name="HBase" />
         <module name="Memcached" />
-        <module name="quartz_Test" />
+        <module name="Quartz_Spring" />
+        <module name="Springboot_Swagger2" />
         <module name="SSMFreeMarker" />
+        <module name="ZooKeeper" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="quartz_Test" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ES_Springboot_Poetries" options="-parameters" />
       <module name="FastDFS_SpringBoot" options="" />
       <module name="FreeMarker" options="" />
       <module name="Memcached" options="" />
+      <module name="Quartz_Spring" options="" />
       <module name="Springboot_FreeMarker" options="" />
+      <module name="Springboot_Swagger2" options="-parameters" />
     </option>
   </component>
 </project>

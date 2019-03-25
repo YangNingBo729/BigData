@@ -27,10 +27,10 @@ public class CustomPoetryRepositoryImpl implements CustomPoetryRepository {
     private ElasticsearchTemplate template;
 
     @Override
-    public List<PoetryES> search(final String type, String key) {
+    public List<PoetryES> search(String type, String key) {
         NativeSearchQuery query = new NativeSearchQueryBuilder()
                 .withQuery(matchQuery(type, key))
-                .withHighlightFields(new HighlightBuilder.Field("type"))
+                .withHighlightFields(new HighlightBuilder.Field(type).preTags("<span style=\"color:red\">").postTags("</span>"))
                 .build();
         // List<PoetryES> poetryList = template.queryForList(query, PoetryES.class);
         AggregatedPage<PoetryES> poetryES = template.queryForPage(query, PoetryES.class, new SearchResultMapper() {
@@ -58,7 +58,7 @@ public class CustomPoetryRepositoryImpl implements CustomPoetryRepository {
                     } else {
                         String name =
                                 searchHit.getHighlightFields().get("name").fragments()[0].toString();
-                        poetryES.setTitle(name);
+                        poetryES.setName(name);
                         System.out.println(name);
                     }
                     if (searchHit.getHighlightFields().get("content") == null) {
@@ -69,6 +69,7 @@ public class CustomPoetryRepositoryImpl implements CustomPoetryRepository {
                         poetryES.setContent(content);
                         System.out.println(content);
                     }
+
                     poetryES.setCreated(new Date(Long.parseLong(searchHit.getSourceAsMap().get("created").toString())));
                     //new SimpleDateFormat("yyyy-MM-dd HH-mm-ss").format( searchHit.getSourceAsMap().get("created"))
                     poetryESList.add(poetryES);

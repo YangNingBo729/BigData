@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/ES_Springboot_Poetries" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FastDFS" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FastDFS_SpringBoot" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/FreeMarker" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/HBase" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Hadoop_HDFS" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Hadoop_MapReduce" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Memcached" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Quartz_Spring" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/SSMFreeMarker" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Springboot_FreeMarker" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Springboot_Swagger2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ZooKeeper" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/quartz_Test" charset="UTF-8" />
   </component>
 </project>
