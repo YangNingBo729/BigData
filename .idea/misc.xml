@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/Hadoop_HDFS/pom.xml" />
         <option value="$PROJECT_DIR$/Hadoop_MapReduce/pom.xml" />
         <option value="$PROJECT_DIR$/HBase/pom.xml" />
+        <option value="$PROJECT_DIR$/Dubbo_service_consumer/pom.xml" />
       </list>
     </option>
   </component>
